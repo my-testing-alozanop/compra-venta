@@ -1,61 +1,13 @@
-cat_id;suc_id;cat_nom;fech_crea;est
-;1;Mobile & Accesories;;1
-;1;Desktop;;1
-;1;Electronics;;1
-;1;Home & Furniture;;1
-;1;Grocery;;1
-;1;Fashion;;1
-;1;Appliances;;1
-;1;Beauty, Toys & More;;1
-;1;Food & Drinks;;1
-;1;Toys & Games;;1
-;2;Mobile & Accesories;;1
-;2;Desktop;;1
-;2;Electronics;;1
-;2;Home & Furniture;;1
-;2;Grocery;;1
-;2;Fashion;;1
-;2;Appliances;;1
-;2;Beauty, Toys & More;;1
-;2;Food & Drinks;;1
-;2;Toys & Games;;1
-;3;Mobile & Accesories;;1
-;3;Desktop;;1
-;3;Electronics;;1
-;3;Home & Furniture;;1
-;3;Grocery;;1
-;3;Fashion;;1
-;3;Appliances;;1
-;3;Beauty, Toys & More;;1
-;3;Food & Drinks;;1
-;3;Toys & Games;;1
-;4;Mobile & Accesories;;1
-;4;Desktop;;1
-;4;Electronics;;1
-;4;Home & Furniture;;1
-;4;Grocery;;1
-;4;Fashion;;1
-;4;Appliances;;1
-;4;Beauty, Toys & More;;1
-;4;Food & Drinks;;1
-;4;Toys & Games;;1
-;5;Mobile & Accesories;;1
-;5;Desktop;;1
-;5;Electronics;;1
-;5;Home & Furniture;;1
-;5;Grocery;;1
-;5;Fashion;;1
-;5;Appliances;;1
-;5;Beauty, Toys & More;;1
-;5;Food & Drinks;;1
-;5;Toys & Games;;1
-;6;Mobile & Accesories;;1
-;6;Desktop;;1
-;6;Electronics;;1
-;6;Home & Furniture;;1
-;6;Grocery;;1
-;6;Fashion;;1
-;6;Appliances;;1
-;6;Beauty, Toys & More;;1
-;6;Food & Drinks;;1
-;6;Toys & Games;;1
+mon_id;suc_id;mon_nom;fecha_crea;est
+;1;SOL;;1
+;1;DOL;;1
+;2;SOL;;1
+;2;DOL;;1
+;3;SOL;;1
+;3;DOL;;1
+;4;SOL;;1
+;4;DOL;;1
+;5;SOL;;1
+;5;DOL;;1
+;6;SOL;;1
+;6;DOL;;1
