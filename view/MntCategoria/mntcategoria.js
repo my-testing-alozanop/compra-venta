@@ -1,4 +1,4 @@
-var suc_id = $("#SUC_IDx").val();
+var suc_id = $("#suc_idx").val();
 
 function init() {
   $("#mantenimiento_form").on("submit", function (e) {
