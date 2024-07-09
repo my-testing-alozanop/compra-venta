@@ -1,7 +1,7 @@
 <?php
-   /*  require_once("../../models/Menu.php");
+    require_once("../../models/Menu.php");
     $menu = new Menu();
-    $datos = $menu->get_menu_x_rol_id($_SESSION["ROL_ID"]); */
+    $datos = $menu->get_menu_x_rol_id($_SESSION["rol_id"]);
 ?>
 
 <div class="app-menu navbar-menu">
@@ -43,11 +43,11 @@
 
                 <?php
                     foreach ($datos as $row) {
-                       if ($row["MEN_GRUPO"]=="Dashboard" && $row["MEND_PERMI"]=="Si"){
+                       if ($row["men_grupo"]=="Dashboard" && $row["mend_permi"]=="Si"){
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="<?php echo $row["MEN_RUTA"];?>">
-                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["MEN_NOM"];?></span>
+                                    <a class="nav-link menu-link" href="<?php echo $row["men_ruta"];?>">
+                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["men_nom"];?></span>
                                     </a>
                                 </li>
                             <?php
@@ -59,11 +59,11 @@
 
                 <?php
                     foreach ($datos as $row) {
-                       if ($row["MEN_GRUPO"]=="Mantenimiento" && $row["MEND_PERMI"]=="Si"){
+                       if ($row["men_grupo"]=="Mantenimiento" && $row["mend_permi"]=="Si"){
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="<?php echo $row["MEN_RUTA"];?>">
-                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["MEN_NOM"];?></span>
+                                    <a class="nav-link menu-link" href="<?php echo $row["men_ruta"];?>">
+                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["men_nom"];?></span>
                                     </a>
                                 </li>
                             <?php
@@ -75,11 +75,11 @@
 
                 <?php
                     foreach ($datos as $row) {
-                       if ($row["MEN_GRUPO"]=="Compra" && $row["MEND_PERMI"]=="Si"){
+                       if ($row["men_grupo"]=="Compra" && $row["mend_permi"]=="Si"){
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="<?php echo $row["MEN_RUTA"];?>">
-                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["MEN_NOM"];?></span>
+                                    <a class="nav-link menu-link" href="<?php echo $row["men_ruta"];?>">
+                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["men_nom"];?></span>
                                     </a>
                                 </li>
                             <?php
@@ -92,11 +92,11 @@
 
                 <?php
                     foreach ($datos as $row) {
-                       if ($row["MEN_GRUPO"]=="Venta" && $row["MEND_PERMI"]=="Si"){
+                       if ($row["men_grupo"]=="Venta" && $row["mend_permi"]=="Si"){
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="<?php echo $row["MEN_RUTA"];?>">
-                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["MEN_NOM"];?></span>
+                                    <a class="nav-link menu-link" href="<?php echo $row["men_ruta"];?>">
+                                        <i class="ri-honour-line"></i> <span data-key="t-widgets"><?php echo $row["men_nom"];?></span>
                                     </a>
                                 </li>
                             <?php
