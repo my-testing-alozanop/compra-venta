@@ -17,7 +17,8 @@
                     $_POST["usu_dni"],
                     $_POST["usu_telf"],
                     $_POST["usu_pass"],
-                    $_POST["rol_id"]
+                    $_POST["rol_id"],
+                    $_POST["usu_img"]
                 );
             }else{
                 $usuario->update_usuario(
@@ -29,7 +30,8 @@
                     $_POST["usu_dni"],
                     $_POST["usu_telf"],
                     $_POST["usu_pass"],
-                    $_POST["rol_id"]
+                   $_POST["rol_id"],
+                    $_POST["usu_img"]
                 );
             }
             break;
@@ -40,6 +42,22 @@
             $data=Array();
             foreach($datos as $row){
                 $sub_array = array();
+
+                 if ($row["usu_img"] != ''){
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/usuario/".$row["usu_img"]."' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }else{
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/usuario/no_imagen.png' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }
                 $sub_array[] = $row["usu_correo"];
                 $sub_array[] = $row["usu_nom"];
                 $sub_array[] = $row["usu_ape"];
@@ -75,6 +93,11 @@
                     $output["usu_telf"] = $row["usu_telf"];
                     $output["usu_pass"] = $row["usu_pass"];
                     $output["rol_id"] = $row["rol_id"];
+                    if($row["usu_img"] != ''){
+                        $output["usu_img"] = '<img src="../../assets/usuario/'.$row["usu_img"].'" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image"></img><input type="hidden" name="hidden_usuario_imagen" value="'.$row["usu_img"].'" />';
+                    }else{
+                        $output["usu_img"] = '<img src="../../assets/usuario/no_imagen.png" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image"></img><input type="hidden" name="hidden_usuario_imagen" value="" />';
+                    }
                 }
                 echo json_encode($output);
             }

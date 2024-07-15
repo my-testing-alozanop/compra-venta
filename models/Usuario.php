@@ -30,9 +30,17 @@
         }
 
         /* TODO: Registro de datos */
-        public function insert_usuario($suc_id,$usu_correo,$usu_nom,$usu_ape,$usu_dni,$usu_telf,$usu_pass,$rol_id){
+         public function insert_usuario($suc_id,$usu_correo,$usu_nom,$usu_ape,$usu_dni,$usu_telf,$usu_pass,$rol_id,$usu_img){
             $conectar=parent::Conexion();
-            $sql="call sp_i_usuario_01 (?,?,?,?,?,?,?,?)";
+
+            require_once("Usuario.php");
+            $usu=new Usuario();
+            $usu_img='';
+            if($_FILES["usu_img"]["name"] !=''){
+                $usu_img=$usu->upload_image();
+            }
+
+            $sql="call sp_i_usuario_01 (?,?,?,?,?,?,?,?,?)";
             $query=$conectar->prepare($sql);
             $query->bindValue(1,$suc_id);
             $query->bindValue(2,$usu_correo);
@@ -42,13 +50,24 @@
             $query->bindValue(6,$usu_telf);
             $query->bindValue(7,$usu_pass);
             $query->bindValue(8,$rol_id);
+            $query->bindValue(9,$usu_img);
             $query->execute();
         }
 
         /* TODO:Actualizar Datos */
-        public function update_usuario($usu_id,$suc_id,$usu_correo,$usu_nom,$usu_ape,$usu_dni,$usu_telf,$usu_pass,$rol_id){
+        public function update_usuario($usu_id,$suc_id,$usu_correo,$usu_nom,$usu_ape,$usu_dni,$usu_telf,$usu_pass,$rol_id,$usu_img){
             $conectar=parent::Conexion();
-            $sql="call sp_u_usuario_01 (?,?,?,?,?,?,?,?,?)";
+
+            require_once("Usuario.php");
+            $usu=new Usuario();
+            $usu_img='';
+            if($_FILES["usu_img"]["name"] !=''){
+                $usu_img=$usu->upload_image();
+            }else{
+                $usu_img = $POST["hidden_usuario_imagen"];
+            }
+            
+            $sql="call sp_u_usuario_01 (?,?,?,?,?,?,?,?,?,?)";
             $query=$conectar->prepare($sql);
             $query->bindValue(1,$usu_id);
             $query->bindValue(2,$suc_id);
@@ -59,6 +78,7 @@
             $query->bindValue(7,$usu_telf);
             $query->bindValue(8,$usu_pass);
             $query->bindValue(9,$rol_id);
+            $query->bindValue(10,$usu_img);
             $query->execute();
         }
 
@@ -107,6 +127,16 @@
                 }
             }else{
                 exit();
+            }
+        }
+
+        public function upload_image(){
+            if (isset($_FILES["usu_img"])){
+                $extension = explode('.', $_FILES['usu_img']['name']);
+                $new_name = rand() . '.' . $extension[1];
+                $destination = '../assets/usuario/' . $new_name;
+                move_uploaded_file($_FILES['usu_img']['tmp_name'], $destination);
+                return $new_name;
             }
         }
     }

@@ -46,6 +46,23 @@
             $data=Array();
             foreach($datos as $row){
                 $sub_array = array();
+
+                if ($row["prod_img"] != ''){
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/producto/".$row["prod_img"]."' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }else{
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/producto/no_imagen.png' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }
+
                 $sub_array[] = $row["cat_nom"];
                 $sub_array[] = $row["prod_nom"];
                 $sub_array[] = $row["und_nom"];
@@ -83,6 +100,12 @@
                     $output["prod_pventa"] = $row["prod_pventa"];
                     $output["prod_stock"] = $row["prod_stock"];
                     $output["fech_crea"] = $row["fech_crea"];
+                    if($row["prod_img"] != ''){
+                        $output["prod_img"] = '<img src="../../assets/producto/'.$row["prod_img"].'" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image"></img><input type="hidden" name="hidden_producto_imagen" value="'.$row["prod_img"].'" />';
+                    }else{
+                        $output["prod_img"] = '<img src="../../assets/producto/no_imagen.png" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image"></img><input type="hidden" name="hidden_producto_imagen" value="" />';
+                    }
+                    
                 }
                 echo json_encode($output);
             }

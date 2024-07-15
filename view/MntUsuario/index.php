@@ -45,6 +45,7 @@
                                     <table id="table_data" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th>Correo</th>
                                                 <th>Nombre</th>
                                                 <th>Apellido</th>
