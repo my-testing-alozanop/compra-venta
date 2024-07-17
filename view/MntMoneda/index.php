@@ -1,7 +1,12 @@
 <?php
     require_once("../../config/conexion.php");
+    require_once("../../models/Rol.php");
+    $rol = new Rol();
+    $datos = $rol->validar_acceso_rol($_SESSION["usu_id"],"mntmoneda");
     if(isset($_SESSION["usu_id"])){
+        if(is_array($datos) and count($datos)>0){
 ?>
+
 
 <!doctype html>
 <html lang="es" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
@@ -76,6 +81,9 @@
 
 </html>
 <?php
+        }else{
+            header("Location:".Conectar::ruta()."view/404/");
+        }
     }else{
         header("Location:".Conectar::ruta()."view/404/");
     }

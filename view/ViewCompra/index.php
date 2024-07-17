@@ -1,6 +1,10 @@
 <?php
     require_once("../../config/conexion.php");
+    require_once("../../models/Rol.php");
+    $rol = new Rol();
+    $datos = $rol->validar_acceso_rol($_SESSION["usu_id"],"viewcompra");
     if(isset($_SESSION["usu_id"])){
+        if(is_array($datos) and count($datos)>0){
 ?>
 
 <!doctype html>
@@ -135,6 +139,7 @@
                                                 <table class="table table-borderless text-center table-nowrap align-middle mb-0">
                                                     <thead>
                                                         <tr class="table-active">
+                                                            <th scope="col"></th>
                                                             <th scope="col">Categoria</th>
                                                             <th scope="col">Producto</th>
                                                             <th scope="col" style="width: 50px;">Und</th>
@@ -205,6 +210,9 @@
 
 </html>
 <?php
+        }else{
+            header("Location:".Conectar::ruta()."view/404/");
+        }
     }else{
         header("Location:".Conectar::ruta()."view/404/");
     }

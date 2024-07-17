@@ -1,6 +1,10 @@
 <?php
     require_once("../../config/conexion.php");
+    require_once("../../models/Rol.php");
+    $rol = new Rol();
+    $datos = $rol->validar_acceso_rol($_SESSION["usu_id"],"mntcompra");
     if(isset($_SESSION["usu_id"])){
+        if(is_array($datos) and count($datos)>0){
 ?>
 
 <!doctype html>
@@ -53,7 +57,15 @@
                                     <div class="live-preview">
                                         <div class="row align-items-center g-3">
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
+                                                <label for="doc_id" class="form-label">Documento</label>
+                                                <select id="doc_id" name="doc_id" class="form-control form-select" aria-label="Seleccionar">
+                                                    <option value="0" selected>Seleccione</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-4">
                                                 <label for="pag_id" class="form-label">Pago</label>
                                                 <select id="pag_id" name="pag_id" class="form-control form-select" aria-label="Seleccionar">
                                                     <option value="0" selected>Seleccione</option>
@@ -61,7 +73,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <label for="mon_id" class="form-label">Moneda</label>
                                                 <select id="mon_id" name="mon_id" class="form-control form-select" aria-label="Seleccionar">
                                                     <option value='0' selected>Seleccione</option>
@@ -190,6 +202,7 @@
                                     <table id="table_data" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                             <tr>
+                                                <th></th>
                                                 <th>Categoria</th>
                                                 <th>Producto</th>
                                                 <th>Und</th>
@@ -250,6 +263,9 @@
 
 </html>
 <?php
+        }else{
+            header("Location:".Conectar::ruta()."view/404/");
+        }
     }else{
         header("Location:".Conectar::ruta()."view/404/");
     }

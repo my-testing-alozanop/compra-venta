@@ -119,6 +119,7 @@
                         $_SESSION["com_id"]=$resultado["com_id"];
                         $_SESSION["emp_id"]=$resultado["emp_id"];
                         $_SESSION["rol_id"]=$resultado["rol_id"];
+                        $_SESSION["usu_img"]=$resultado["usu_img"];
 
                         header("Location:".Conectar::ruta()."view/home/");
                     }else{

@@ -38,6 +38,21 @@
             $data=Array();
             foreach($datos as $row){
                 $sub_array = array();
+                if ($row["PROD_IMG"] != ''){
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/producto/".$row["PROD_IMG"]."' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }else{
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/producto/no_imagen.png' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }
                 $sub_array[] = $row["cat_nom"];
                 $sub_array[] = $row["prod_nom"];
                 $sub_array[] = $row["und_nom"];
@@ -61,7 +76,32 @@
             foreach($datos as $row){
                 ?>
                      <tr>
-                        <th><?php echo $row["cat_nom"];?></th>
+                        <td>
+                            <?php 
+                                if ($row["prod_img"] != ''){
+                                    ?>
+                                        <?php
+                                            echo "<div class='d-flex align-items-center'>" .
+                                                    "<div class='flex-shrink-0 me-2'>".
+                                                        "<img src='../../assets/producto/".$row["PROD_IMG"]."' alt='' class='avatar-xs rounded-circle'>".
+                                                    "</div>".
+                                                "</div>";
+                                        ?>
+                                    <?php
+                                }else{
+                                    ?>
+                                        <?php 
+                                            echo "<div class='d-flex align-items-center'>" .
+                                                    "<div class='flex-shrink-0 me-2'>".
+                                                        "<img src='../../assets/producto/no_imagen.png' alt='' class='avatar-xs rounded-circle'>".
+                                                    "</div>".
+                                                "</div>";
+                                        ?>
+                                    <?php
+                                }
+                            ?>
+                        </td>
+                        <td><?php echo $row["cat_nom"];?></td>
                         <td><?php echo $row["prod_nom"];?></td>
                         <td scope="row"><?php echo $row["und_nom"];?></td>
                         <td><?php echo $row["prod_pcompra"];?></td>
@@ -134,6 +174,21 @@
                 $sub_array[] = $row["compr_igv"];
                 $sub_array[] = $row["compr_total"];
                 $sub_array[] = $row["usu_nom"]." ".$row["usu_ape"];
+                  if ($row["usu_img"] != ''){
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/usuario/".$row["usu_img"]."' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }else{
+                    $sub_array[] =
+                    "<div class='d-flex align-items-center'>" .
+                        "<div class='flex-shrink-0 me-2'>".
+                            "<img src='../../assets/usuario/no_imagen.png' alt='' class='avatar-xs rounded-circle'>".
+                        "</div>".
+                    "</div>";
+                }
                 $sub_array[] = '<a href="../ViewCompra/?c='.$row["compr_id"].'" target="_blank" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-printer-line"></i></a>';
                 $sub_array[] = '<button type="button" onClick="ver('.$row["compr_id"].')" id="'.$row["compr_id"].'" class="btn btn-success btn-icon waves-effect waves-light"><i class="ri-settings-2-line"></i></button>';
                 $data[] = $sub_array;
