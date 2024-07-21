@@ -1,0 +1,6 @@
+DELIMITER //
+CREATE PROCEDURE `sp_l_pago_01`()
+BEGIN  
+ SELECT * FROM tm_pago WHERE est=1;
+END //
+DELIMITER ;
